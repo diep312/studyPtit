@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../colors.dart';
+import 'colors.dart';
 
 class InputTextField extends StatelessWidget {
   final controller;
@@ -18,7 +18,7 @@ class InputTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 40.0),
+      padding: EdgeInsets.symmetric(vertical: 0, horizontal: 50.0),
       child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
