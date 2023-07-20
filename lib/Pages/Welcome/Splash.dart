@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Components/colors.dart';
-import 'package:flutter_app/Pages/auth_page.dart';
+import 'package:flutter_app/Services/auth_page.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);

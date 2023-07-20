@@ -57,6 +57,30 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.1"
+  cloud_firestore:
+    dependency: "direct main"
+    description:
+      name: cloud_firestore
+      sha256: "5bbc1f5bffa79af54ca035b92b57f81c6fb35ee5471ead67e29c8e12de8432f8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.8.2"
+  cloud_firestore_platform_interface:
+    dependency: transitive
+    description:
+      name: cloud_firestore_platform_interface
+      sha256: "8e0aafeb727087f84710275d59a101b2acf2290ffbb3b111aab70423f8350d5d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "5.15.2"
+  cloud_firestore_web:
+    dependency: transitive
+    description:
+      name: cloud_firestore_web
+      sha256: bbf0ebb9d1e9251caa00e8727389313c64cb4240c1c31f895971c52d0c782316
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.2"
   collection:
     dependency: transitive
     description:
@@ -97,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.0"
+  equatable:
+    dependency: "direct dev"
+    description:
+      name: equatable
+      sha256: c2b87cb7756efdf69892005af546c56c0b5037f54d2a88269b4f347a505e3ca2
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.5"
   fake_async:
     dependency: transitive
     description:
@@ -296,11 +328,27 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.5"
+  scroll_snap_list:
+    dependency: "direct main"
+    description:
+      name: scroll_snap_list
+      sha256: "8009ad9030f680b93f3107b29b1ea31284d867aa4972868d2970c6d61fe9e59f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.1"
   sky_engine:
     dependency: transitive
     description: flutter
     source: sdk
     version: "0.0.99"
+  smooth_page_indicator:
+    dependency: "direct dev"
+    description:
+      name: smooth_page_indicator
+      sha256: "725bc638d5e79df0c84658e1291449996943f93bacbc2cec49963dbbab48d8ae"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   source_span:
     dependency: transitive
     description:

@@ -21,3 +21,10 @@ const MaterialColor appcolorsAccent = MaterialColor(_appcolorsAccentValue, <int,
   700: Color(0xFFFFF580),
 });
 const int _appcolorsAccentValue = 0xFFFDF9CF;
+
+class UsedColor {
+  static const kPrimaryColor = Color(0xFF786B54);
+  static const kSecondaryColor = Color(0xFF353231);
+  static const kThirdSecondaryColor = Color(0xFFEEEAE2);
+  static const kComplementColor = Color(0xFFA29C90);
+}

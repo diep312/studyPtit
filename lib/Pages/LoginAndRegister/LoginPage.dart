@@ -1,8 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Pages/RegisterPage.dart';
 import 'package:flutter_app/Components/TextFieldInput.dart';
 import 'package:flutter_app/Components/RoundButton.dart';
+import 'package:flutter_app/Services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -15,39 +16,18 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
   void signInUser() async {
-    showDialog(
-        context: context,
-        builder: (context)  {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-    );
-
+    final authService = Provider.of<AuthService>(context, listen: false);
     try{
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: usernameController.text,
-        password: passwordController.text,
+      await authService.signInwithEmailAndPassword(
+          usernameController.text ,
+          passwordController.text
       );
-      Navigator.pop(context);
-
-    } on FirebaseAuthException catch (e){
-      Navigator.pop(context);
-      switch (e.code){
-        case 'user-not-found':
-          displayErrorMessage("Invalid user!");
-          break;
-        case 'wrong-password':
-          displayErrorMessage("Incorrect password!");
-          break;
-        case 'unknown':
-          displayErrorMessage("Please enter Email/Password correctly!");
-          break;
-        default:
-          displayErrorMessage(e.code);
-      }
+    }
+    catch (e){
+      displayErrorMessage(e.toString());
     }
   }
 

@@ -1,8 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Components/colors.dart';
 import 'package:flutter_app/Components/TextFieldInput.dart';
 import 'package:flutter_app/Components/RoundButton.dart';
+import 'package:flutter_app/Services/auth_service.dart';
+import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -15,39 +18,33 @@ class _RegisterPageState extends State<RegisterPage> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   final re_passwordController = TextEditingController();
+  final nameController = TextEditingController();
   String passwordMessage = '';
 
-  void signUserIn() async {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-    );
+  final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
 
-    try {
-      if(passwordController.text == re_passwordController.text){
-        setState(() {
-          passwordMessage = "";
-        });
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-            email: usernameController.text,
-            password: passwordController.text
+  void signUserIn() async {
+    if(passwordController.text == re_passwordController.text){
+      setState(() {
+        passwordMessage = "";
+      });
+      try {
+        final authService = Provider.of<AuthService>(context, listen: false);
+        authService.signUpwithEmailAndPassword(
+            nameController.text,
+            usernameController.text,
+            passwordController.text
         );
         Navigator.pop(context);
-        Navigator.pop(context);
-      }
-      else{
-        Navigator.pop(context);
-        setState(() {
-          passwordMessage = "You must enter password correctly!";
-        });
-      }
-    } on FirebaseAuthException catch (e){
-      Navigator.pop(context);
 
+      } on FirebaseAuthException catch (e){
+        throw Exception(e.code);
+      }
+    }
+    else{
+      setState(() {
+        passwordMessage = "You must enter password correctly!";
+      });
     }
   }
 
@@ -73,21 +70,27 @@ class _RegisterPageState extends State<RegisterPage> {
                   color: Colors.brown,
                   ),
                 ),
-                SizedBox(height: 30.0),
+                SizedBox(height: 10.0),
                 InputTextField(
                     controller: usernameController,
                     hintText: 'Email',
                     descText: 'Enter your email here',
                     obscureText: false
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
+                InputTextField(
+                    controller: nameController,
+                    hintText: "Name",
+                    descText: "Enter your name here",
+                    obscureText: false),
+                SizedBox(height: 10.0),
                 InputTextField(
                     controller: passwordController,
                     hintText: 'Password',
                     descText: 'Enter your password here',
                     obscureText: true
                 ),
-                SizedBox(height: 20.0),
+                SizedBox(height: 10.0),
                 InputTextField(
                     controller: re_passwordController,
                     hintText: 'Re-enter Password',

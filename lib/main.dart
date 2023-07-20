@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Pages/Splash.dart';
-import 'package:flutter_app/Pages/RegisterPage.dart';
-import 'package:flutter_app/Pages/auth_page.dart';
+import 'package:flutter_app/Pages/Welcome/Splash.dart';
+import 'package:flutter_app/Pages/LoginAndRegister/RegisterPage.dart';
+import 'package:flutter_app/Services/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_app/Services/auth_service.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 
@@ -11,7 +13,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(create: (context) => AuthService(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
