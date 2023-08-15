@@ -42,6 +42,10 @@ class AuthService extends ChangeNotifier{
         "profilePicURL": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmoonvillageassociation.org%2Fwp-content%2Fuploads%2F2018%2F06%2Fdefault-profile-picture1.jpg&f=1&nofb=1&ipt=fc0a9779ab06a6227a06f5784f28daf6a215c88324f2a87098f758f386474c35&ipo=images",
         "briefDesc": "",
         "major" : "",
+        "dateOfBirth" : "",
+        "invitationsInfo" : [],
+        "hasSeenOnBoarding" : false,
+        "contactInfo" : "",
       });
 
       return userCredential;

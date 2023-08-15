@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/Pages/Welcome/Splash.dart';
 import 'package:flutter_app/Pages/LoginAndRegister/RegisterPage.dart';
-import 'package:flutter_app/Services/auth_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_app/Services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -25,7 +24,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LandingPage(),
         '/register': (context) => RegisterPage(),
-        '/auth': (context) => AuthPage(),
       },
       debugShowCheckedModeBanner: false,
     );

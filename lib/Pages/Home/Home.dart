@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Components/DragWidget.dart';
 import 'package:flutter_app/Components/FriendCard.dart';
 import 'package:flutter_app/Components/colors.dart';
 import 'package:flutter_app/Services/Entity/Profile.dart';
@@ -18,53 +17,45 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   GetUserService _getUserService = GetUserService();
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: UsedColor.kThirdSecondaryColor,
-      child: SafeArea(
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: 350,
-              decoration: const ShapeDecoration(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(64),
-                    bottomRight: Radius.circular(64)
-                  )
-                ),
-                color: UsedColor.kSecondaryColor
-              ),
+      child: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 300,
+            decoration: BoxDecoration(
+              color: UsedColor.kPrimaryColor,
+              borderRadius: BorderRadius.only(bottomRight: Radius.circular(30), bottomLeft: Radius.circular(30))
             ),
-            Column(
-              children: [
-                Container(
-                  alignment: Alignment.centerLeft,
-                  padding: EdgeInsets.fromLTRB(40.0, 20, 0, 0),
-                  child: Text(
-                    "Discover",
-                    style: TextStyle(
-                      fontFamily: "Philosopher",
-                      fontSize: 40.0,
-                      fontWeight: FontWeight.bold,
-                      color: UsedColor.kThirdSecondaryColor,
-                    ),
+          ),
+          Column(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: EdgeInsets.fromLTRB(30, 50, 0, 0),
+                child: Text(
+                  "Discover",
+                  style: TextStyle(
+                    fontFamily: "Philosopher",
+                    fontSize: 36.0,
+                    fontWeight: FontWeight.bold,
+                    color: UsedColor.kThirdSecondaryColor,
                   ),
                 ),
-                SizedBox(height: 30.0),
-                _buildUserCards()
-            ]
-          ),]
+              ),
+              SizedBox(height: 20.0),
+              _buildUserCards()
+          ]
         ),
+
+        ]
       ),
     );
   }
 
   Widget _buildUserCards(){
-    ValueNotifier<Swipe> swipeNotifier = ValueNotifier(Swipe.none);
     return StreamBuilder(
       stream: _getUserService.getUserList(),
       builder: (context, snapshot){
@@ -76,13 +67,20 @@ class _HomeScreenState extends State<HomeScreen> {
           return const CircularProgressIndicator();
         }
 
+        //RANDOMIZE CARDS
+        List<DocumentSnapshot> docs = [];
+        for (QueryDocumentSnapshot doc in snapshot.data!.docs) {
+          docs.add(doc);
+        }
+        docs.shuffle();
+
         return SizedBox(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height / 1.4,
           child: ScrollSnapList(
-              itemBuilder:(context, index) => _buildUserCardItem(snapshot.data!.docs[index]),
+              itemBuilder:(context, index) => _buildUserCardItem(docs[index]),
               itemCount: snapshot.data!.size,
-              itemSize: MediaQuery.of(context).size.width + 30,
+              itemSize: 320,
               onItemFocus: (index) {},
               dynamicItemSize: true,
            )
@@ -97,6 +95,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
 }
-
 
 

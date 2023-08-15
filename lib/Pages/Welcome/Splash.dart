@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Components/colors.dart';
 import 'package:flutter_app/Services/auth_page.dart';
+
 
 class LandingPage extends StatefulWidget {
   const LandingPage({Key? key}) : super(key: key);
   @override
-  _splash createState() => _splash();
+  State<LandingPage> createState() => _LandingPage();
 }
 
-class _splash extends State<LandingPage>{
+class _LandingPage extends State<LandingPage>{
   @override
 
   void initState(){
@@ -24,40 +24,41 @@ class _splash extends State<LandingPage>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: appcolors.shade800,
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             SizedBox(
-                height: 290,
-                width: 290,
+                height: 230,
+                width: 230,
                 child: Image.asset(
                   'asset/Logo.png',
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 )
             ),
+            SizedBox(height: 30),
             Text(
-                'StudyPTIT',
+                'COSTUDY',
                 style: TextStyle(
-                  color: Colors.black87,
-                  fontSize: 60.0,
-                  fontFamily: 'Philosopher',
+                  color: Colors.black,
+                  fontSize: 50.0,
+                  fontFamily: 'Nunito Sans',
                   fontWeight: FontWeight.bold,
+                  letterSpacing: 8
                 )
             ),
+            SizedBox(height: 10),
             Text(
-              'Exchange - Explain - Exceed',
+              'LEARN TOGETHER',
               style: TextStyle(
-                color: Colors.black,
-                fontSize: 16.0,
+                color: Colors.black54,
+                fontSize: 20.0,
                 fontFamily: 'Nunito Sans',
-                fontWeight: FontWeight.bold,
+                letterSpacing: 4,
+                fontWeight: FontWeight.bold
               ),
             ),
-            Divider(
-              height: 50.0,
-            )
           ],
         ),
       ),

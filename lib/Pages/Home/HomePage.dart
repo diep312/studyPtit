@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         selectedFontSize: 14,
@@ -42,11 +43,11 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
               label: "Home",
-              icon: Icon(Icons.home)
+              icon: Icon(Icons.home_filled)
           ),
           BottomNavigationBarItem(
               label: "Messages",
-              icon: Icon(Icons.comment)
+              icon: Icon(Icons.messenger)
           ),
           BottomNavigationBarItem(
               label: "Requests",

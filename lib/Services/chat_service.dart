@@ -61,8 +61,17 @@ class ChatService extends ChangeNotifier {
     List<String> ids = [currUserID, receiverUid];
     ids.sort();
     String chatRoomID = ids.join("_");
-
     await _firebaseFirestore.collection('chat_room').doc(chatRoomID).collection("invitation").add(newInvitation.toMap());
+
+    await _firebaseFirestore.collection('users').
+    doc(currUserID).update(
+        {'invitationsInfo': FieldValue.arrayUnion([chatRoomID])}
+    );
+
+    await _firebaseFirestore.collection('users').
+    doc(receiverUid).update(
+        {'invitationsInfo': FieldValue.arrayUnion([chatRoomID])}
+    );
   }
 
   Future<QuerySnapshot<Map<String, dynamic>>> getInvitationdata (String chatRoomID) {
@@ -102,5 +111,48 @@ class ChatService extends ChangeNotifier {
         timestamp: Timestamp.now()
     );
     await _firebaseFirestore.collection('chat_room').doc(chatRoomID).collection("invitation").add(curInvitation.toMap());
+  }
+
+
+  Stream<QuerySnapshot> getInviteStream(List<String> InviteIds) {
+    return FirebaseFirestore.instance
+        .collection('chat_room')
+        .where(FieldPath.documentId, whereIn: InviteIds)
+        .snapshots();
+  }
+
+  Stream<QuerySnapshot> getInvitations(String userId){
+      return FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
+          .snapshots()
+          .asyncMap((DocumentSnapshot document) async {
+        List<String> inviteIds = List<String>.from(document.get('invitationsInfo'));
+        return getInviteStream(inviteIds).first; });
+  }
+
+  Future<String?> getLastSentMessage (String userID, String otherUserID, String senderName) async{
+    List<String> ids = [userID, otherUserID];
+    ids.sort();
+    String chatRoomID = ids.join("_");
+    return await _firebaseFirestore.collection("chat_room").doc(chatRoomID).collection("messages").orderBy("timestamp", descending: true).get().then(
+        (QuerySnapshot query) {
+          DocumentSnapshot doc = query.docs.first;
+          Map<String, dynamic> data = doc.data() as Map<String, dynamic>;
+          if(data.isEmpty){
+            return null;
+          }
+          else{
+            String lastMessage;
+            if(data['senderID'] == userID){
+              lastMessage = "Me: ${data['message']}";
+            }
+            else {
+              lastMessage = "${senderName}: ${data['message']}";
+            }
+            return lastMessage;
+          }
+        }
+    );
   }
 }
