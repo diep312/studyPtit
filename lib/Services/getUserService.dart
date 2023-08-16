@@ -10,7 +10,7 @@ class GetUserService extends ChangeNotifier{
   Stream <QuerySnapshot> getUserList() {
     return _firebaseFirestore
         .collection('users').where(
-        "uid", isNotEqualTo: _firebaseAuth.currentUser!.uid.toString())
+        "uid", isNotEqualTo: _firebaseAuth.currentUser!.uid.toString()).limit(4)
         .snapshots();
   }
 

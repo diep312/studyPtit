@@ -173,12 +173,14 @@ class _UpdateProfileState extends State<UpdateProfile> {
                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(100), color: UsedColor.kSecondaryColor),
                            child: IconButton(
                              onPressed: () async {
-                               await FirebaseFirestore.instance.collection("user")
-                                   .doc(FirebaseAuth.instance.currentUser!.uid).update(
-                                   {
-                                     'briefDesc' : descController.text
-                                   }
-                               );
+                               if(descController.text.isNotEmpty){
+                                 await FirebaseFirestore.instance.collection("users")
+                                     .doc(FirebaseAuth.instance.currentUser!.uid).update(
+                                     {
+                                       'briefDesc' : descController.text
+                                     }
+                                 );
+                               }
                                if(context.mounted){
                                  ScaffoldMessenger.of(context).showSnackBar(
                                    const SnackBar(
@@ -186,6 +188,8 @@ class _UpdateProfileState extends State<UpdateProfile> {
                                    ),
                                  );
                                }
+                               setState(() {
+                               });
                              },
                              icon: const Icon(
                                  Icons.check,
@@ -425,6 +429,9 @@ class _UpdateProfileState extends State<UpdateProfile> {
     if(context.mounted){
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
     }
+    setState(() {
+
+    });
   }
 
   // Add picture to album

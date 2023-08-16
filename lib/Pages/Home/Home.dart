@@ -9,7 +9,6 @@ import 'package:scroll_snap_list/scroll_snap_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -81,8 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
               itemBuilder:(context, index) => _buildUserCardItem(docs[index]),
               itemCount: snapshot.data!.size,
               itemSize: 320,
-              onItemFocus: (index) {},
+              onItemFocus: (index) {
+              },
               dynamicItemSize: true,
+              curve: Curves.easeInOut,
            )
           );
       }

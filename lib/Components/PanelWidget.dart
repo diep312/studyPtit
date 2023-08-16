@@ -51,8 +51,8 @@ class _PanelWidgetState extends State<PanelWidget> {
         ),
         Container(
           padding: EdgeInsets.all(20),
-          height: 120,
-          child: Expanded(
+          height: 150,
+          child: Center(
             child: Text(
               widget.userProfile.userName,
               style: TextStyle(
