@@ -5,8 +5,9 @@
 
 ## CÁCH CÀI ĐẶT ỨNG DỤNG (Dành cho người dùng):
 For Android: 
-* Tải file .apk về: https://www.mediafire.com/file/80j5tzqu0utv10n/CoStudy.apk/file
-* Tải ứng dụng APK Installer trên Google Play: https://play.google.com/store/apps/details?id=braveheart.apps.apkinstaller&pcampaignid=web_share
+* Tải file .apk về: https://tsfr.io/join/ycfhh7
+* Lựa chọn cài đặt ứng dụng. 
+* Tải ứng dụng APK Installer trên Google Play: https://play.google.com/store/apps/details?id=braveheart.apps.apkinstaller&pcampaignid=web_share (Optional) 
 
 For IOS: Coming soon... 
 
