@@ -12,7 +12,7 @@ For Android:
 For IOS: Coming soon... 
 
 ## CÁCH CHẠY ỨNG DỤNG (Dành cho nhà phát triển): 
-# FULL TUTORIAL: https://docs.google.com/document/d/1nPqHg6hNVE5CRLc92nnlYwGne7Fv3k03UQQoJ1tx-Fg/edit?usp=sharing
+### FULL TUTORIAL: https://docs.google.com/document/d/1nPqHg6hNVE5CRLc92nnlYwGne7Fv3k03UQQoJ1tx-Fg/edit?usp=sharing
 1. Cài Flutter trên máy: Hướng đẫn cài Flutter: https://docs.flutter.dev/get-started/install
 2. Git Clone Code về máy tính, (TẢI GIT: https://git-scm.com/downloads)
 3. Cài Android Studio (hoặc IDE khác nếu bạn muốn) 
