@@ -12,8 +12,10 @@ For Android:
 For IOS: Coming soon... 
 
 ## CÁCH CHẠY ỨNG DỤNG (Dành cho nhà phát triển): 
+# FULL TUTORIAL: https://docs.google.com/document/d/1nPqHg6hNVE5CRLc92nnlYwGne7Fv3k03UQQoJ1tx-Fg/edit?usp=sharing
 1. Cài Flutter trên máy: Hướng đẫn cài Flutter: https://docs.flutter.dev/get-started/install
-2. Git Clone Code về máy tính
-3. Chạy flutter pub get trong terminal để lấy các dependancies. 
-4. LƯU Ý LẤY THÔNG TIN BACK-END YÊU CẦU PERMISSION TỪ CHỦ ỨNG DỤNG (Tức là nhóm The Miserables), HÃY LIÊN HỆ VỚI NHÓM ĐỂ CÓ THỂ CHO QUYỀN TRUY CẬP
-5. Chạy code và enjoy :P 
+2. Git Clone Code về máy tính, (TẢI GIT: https://git-scm.com/downloads)
+3. Cài Android Studio (hoặc IDE khác nếu bạn muốn) 
+4. Chạy flutter pub get trong terminal để lấy các dependancies. 
+5. LƯU Ý LẤY THÔNG TIN BACK-END YÊU CẦU PERMISSION TỪ CHỦ ỨNG DỤNG (Tức là nhóm The Miserables), HÃY LIÊN HỆ VỚI NHÓM ĐỂ CÓ THỂ CHO QUYỀN TRUY CẬP
+6. Chạy code. 
