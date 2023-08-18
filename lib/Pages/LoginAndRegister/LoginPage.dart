@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                 height: 120.0,
                 width: 250.0,
                 child: Text(
-                    'Welcome to STUDYPTIT',
+                    'Welcome to COSTUDY',
                     style: TextStyle(
                       fontSize: 48.0,
                       fontFamily: 'Philosopher',
